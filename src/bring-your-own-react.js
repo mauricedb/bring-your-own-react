@@ -1,11 +1,16 @@
+import {jsdom} from 'jsdom';
+const {document} = jsdom().defaultView;
+
 class Component {
 
 }
 
 const createElement = (tag, props, content) => {
-  return {
-    outerHTML: `<div>${content}</div>`
-  }
+  const result = document.createElement(tag);
+
+  result.textContent = content;
+
+  return result;
 }
 
 export default {
