@@ -1,5 +1,6 @@
+import ByoReact from '../../src/bring-your-own-react';
 
-class HelloWorld extends ByoReact.Component {
+export default class HelloWorld extends ByoReact.Component {
   render() {
     return <div>Hello world</div>;
   }
