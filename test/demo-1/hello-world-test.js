@@ -40,4 +40,34 @@ describe('Transpiling hello-world', () => {
       .should
       .equal('<div>Hello world</div>');
   });
+
+  class HelloUniverse extends ByoReact.Component {
+    render() {
+      return <div>Hello <b>universe</b></div>;
+    }  
+  }
+
+  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+    const component = <div>
+        Hello <b>universe</b>
+      </div>;
+
+    component
+      .outerHTML
+      .should
+      .equal('<div>Hello <b>universe</b></div>');
+  });
+
+  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+    const component = (<div>
+        <HelloUniverse />
+        &nbsp;
+        <p>and the rest</p>
+      </div>);
+
+    component
+      .outerHTML
+      .should
+      .equal('<div><div>Hello <b>universe</b></div>&nbsp;<p>and the rest</p></div>');
+  });
 });
