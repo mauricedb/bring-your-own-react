@@ -23,6 +23,15 @@ describe('Transpiling hello-world', () => {
       .equal('<div>Hello world</div>');
   });
 
+  it('should render <HelloWorld /> as <div>Hello world</div>', () => {
+    const component = <HelloWorld />;
+
+    component
+      .outerHTML
+      .should
+      .equal('<div>Hello world</div>');
+  });
+
   it('should render <div>Hello world</div> as HTMLDivElement', () => {
     const component = <div>Hello world</div>;
 
@@ -31,5 +40,4 @@ describe('Transpiling hello-world', () => {
       .should
       .equal('<div>Hello world</div>');
   });
-  
 });

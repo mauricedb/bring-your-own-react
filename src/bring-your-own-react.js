@@ -6,9 +6,15 @@ class Component {
 }
 
 const createElement = (tag, props, content) => {
-  const result = document.createElement(tag);
+  let result;
+  if (typeof tag === 'string') {
+    result = document.createElement(tag);
+    result.textContent = content;
+  } else {
+    const component = new tag()
+    result = component.render();
+  }
 
-  result.textContent = content;
 
   return result;
 }
