@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'demo-1': ['./demo/demo-1/hello-world.jsx'],
+        'demo-1': ['./demo/demo-1/app.jsx'],
     },
     output: {
         path: './dist',

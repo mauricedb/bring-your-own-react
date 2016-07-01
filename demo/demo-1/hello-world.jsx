@@ -5,3 +5,4 @@ export default class HelloWorld extends ByoReact.Component {
     return <div>Hello world</div>;
   }
 }
+
