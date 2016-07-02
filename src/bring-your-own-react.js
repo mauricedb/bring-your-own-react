@@ -7,23 +7,23 @@ const createElement = (tag, props, ...childeren) => {
   if (typeof tag === 'string') {
     result = document.createElement(tag);
   } else {
-    const component = new tag()
+    const component = new tag(); // eslint-disable-line new-cap
     result = component.render();
   }
 
-  for (let child of childeren) {
+  for (const child of childeren) {
     if (typeof child === 'string') {
       const textNode = document.createTextNode(child);
-      result.appendChild(textNode);    
+      result.appendChild(textNode);
     } else {
       result.appendChild(child);
     }
   }
 
   return result;
-}
+};
 
 export default {
   createElement,
-  Component
+  Component,
 };

@@ -6,6 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "eslint": "eslint ./src/**/*.js ./demo/**/*.js ./demo/**/*.jsx",
+    "eslint:fix": "npm run eslint -- --fix",
     "test": "mocha",
     "test:watch": "npm test -- --watch"
   },
