@@ -1,5 +1,6 @@
 import chai from 'chai';
 import ByoReact from '../../src/bring-your-own-react';
+import ByoReactDOM from '../../src/bring-your-own-react-dom';
 import HelloWorld from '../../demo/demo-1/hello-world.jsx';
 
 chai.should();
@@ -26,8 +27,11 @@ describe('Transpiling hello-world', () => {
   it('should render <HelloWorld /> as <div>Hello world</div>', () => {
     const component = <HelloWorld />;
 
-    component
-      .outerHTML
+    const result = document.createElement('div');
+    ByoReactDOM.render(component, result)
+
+    result
+      .innerHTML
       .should
       .equal('<div>Hello world</div>');
   });
@@ -35,8 +39,11 @@ describe('Transpiling hello-world', () => {
   it('should render <div>Hello world</div> as HTMLDivElement', () => {
     const component = <div>Hello world</div>;
 
-    component
-      .outerHTML
+    const result = document.createElement('div');
+    ByoReactDOM.render(component, result)
+
+    result
+      .innerHTML
       .should
       .equal('<div>Hello world</div>');
   });
@@ -52,8 +59,11 @@ describe('Transpiling hello-world', () => {
         Hello <b>universe</b>
       </div>;
 
-    component
-      .outerHTML
+    const result = document.createElement('div');
+    ByoReactDOM.render(component, result)
+
+    result
+      .innerHTML
       .should
       .equal('<div>Hello <b>universe</b></div>');
   });
@@ -65,8 +75,11 @@ describe('Transpiling hello-world', () => {
         <p>and the rest</p>
       </div>);
 
-    component
-      .outerHTML
+    const result = document.createElement('div');
+    ByoReactDOM.render(component, result)
+
+    result
+      .innerHTML
       .should
       .equal('<div><div>Hello <b>universe</b></div>&nbsp;<p>and the rest</p></div>');
   });
