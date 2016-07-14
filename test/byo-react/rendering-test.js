@@ -51,4 +51,31 @@ describe('Rendering', () => {
 
     });
 
+
+    describe('should output markup properties', () => {
+
+        it('should render <div id="42">Hello</div> as HTMLDivElement', () => {
+            const component = <div id="42">Hello</div>;
+
+            const result = document.createElement('div');
+            ByoReactDOM.render(component, result);
+
+            result
+                .innerHTML
+                .should
+                .equal('<div id="42">Hello</div>');
+        });
+        
+        it('should render <div id={42}>Hello</div> as HTMLDivElement', () => {
+            const component = <div id={42}>Hello</div>;
+
+            const result = document.createElement('div');
+            ByoReactDOM.render(component, result);
+
+            result
+                .innerHTML
+                .should
+                .equal('<div id="42">Hello</div>');
+        });
+    })
 });
