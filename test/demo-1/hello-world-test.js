@@ -24,7 +24,7 @@ describe('Transpiling hello-world', () => {
       .equal('<div>Hello world</div>');
   });
 
-  it('should render <HelloWorld /> as <div>Hello world</div>', () => {
+  it.only('should render <HelloWorld /> as <div>Hello world</div>', () => {
     const component = <HelloWorld />;
 
     const result = document.createElement('div');

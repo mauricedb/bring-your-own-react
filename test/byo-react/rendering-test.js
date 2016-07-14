@@ -9,7 +9,6 @@ class TestChild extends ByoReact.Component {
     render() {
         return <div>Hello {this.props.name}</div>;
     }
-
 }
 
 class TestParent extends ByoReact.Component {
