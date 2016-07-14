@@ -8,6 +8,7 @@ const createElement = (tag, props, ...childeren) => {
     result = document.createElement(tag);
   } else {
     const component = new tag(); // eslint-disable-line new-cap
+    component.props = props;
     result = component.render();
   }
 
