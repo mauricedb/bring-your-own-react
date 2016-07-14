@@ -65,7 +65,7 @@ describe('Rendering', () => {
                 .should
                 .equal('<div id="42">Hello</div>');
         });
-        
+
         it('should render <div id={42}>Hello</div> as HTMLDivElement', () => {
             const component = <div id={42}>Hello</div>;
 
@@ -76,6 +76,30 @@ describe('Rendering', () => {
                 .innerHTML
                 .should
                 .equal('<div id="42">Hello</div>');
+        });
+
+        it('should render className as class', () => {
+            const component = <div className="a">Hello</div>;
+
+            const result = document.createElement('div');
+            ByoReactDOM.render(component, result);
+
+            result
+                .innerHTML
+                .should
+                .equal('<div class="a">Hello</div>');
+        });
+
+        it('should render htmlFor as for', () => {
+            const component = <div><label htmlFor="a">Hello</label><input name="a"/></div>;
+
+            const result = document.createElement('div');
+            ByoReactDOM.render(component, result);
+
+            result
+                .innerHTML
+                .should
+                .equal('<div><label for="a">Hello</label><input name="a"></div>');
         });
     })
 });

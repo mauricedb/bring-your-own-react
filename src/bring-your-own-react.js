@@ -8,9 +8,18 @@ const createElement = (tag, props, ...childeren) => {
     result = document.createElement(tag);
 
     for (const prop of Object.keys(props)) {
-      // the __self variable is added by babel-plugin-transform-react-jsx-self.
-      if (prop !== '__self') {
-        result.setAttribute(prop, props[prop]);
+      switch (prop) {
+        case '__self':
+                // the __self variable is added by babel-plugin-transform-react-jsx-self.
+          break;
+        case 'className':
+          result.className = props[prop];
+          break;
+        case 'htmlFor':
+          result.setAttribute('for', props[prop]);
+          break;
+        default:
+          result.setAttribute(prop, props[prop]);
       }
     }
   } else {
