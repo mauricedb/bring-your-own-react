@@ -6,6 +6,8 @@ function instantiateReactComponent(node) {
   const element = node;
   if (typeof element.type === 'string') {
     instance = ReactHostComponent.createInternalComponent(element);
+  } else if (typeof node === 'string') {
+    instance = ReactHostComponent.createInstanceForText(node);
   } else {
     instance = new ReactCompositeComponentWrapper(element);
   }

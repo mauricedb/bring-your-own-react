@@ -6,11 +6,18 @@ class ReactCompositeComponentWrapper {
     this.currentElement = element;
   }
 
+  constructComponent(publicProps) {
+    const Component = this.currentElement.type;
+
+    return new Component(publicProps);
+  }
+
   mountComponent(container) {
     let renderedElement;
 
-    const inst =
-        new this.currentElement.type(this.currentElement.props); // eslint-disable-line new-cap
+    const publicProps = this.currentElement.props;
+
+    const inst = this.constructComponent(publicProps);
 
     this.instance = inst;
 

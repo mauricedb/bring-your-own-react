@@ -7,6 +7,7 @@ const ReactMount = {
   },
   renderNewRootComponent(nextElement, container) {
     const componentInstance = instantiateReactComponent(nextElement);
+
     ReactMount.mountImageIntoNode(componentInstance, container);
   },
   mountImageIntoNode(wrapperInstance, container) {
