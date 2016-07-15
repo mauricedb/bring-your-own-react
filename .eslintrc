@@ -1,21 +1,30 @@
 {
-    "extends": "airbnb",
-    "parser": "babel-eslint",
-    "ecmaFeatures": {
-        "arrowFunctions": true,
-        "classes": true,
-        "defaultParams": true,
-        "destructuring": true,
-        "experimentalObjectRestSpread": true,
-        "modules": true,
-        "objectLiteralShorthandMethods": true,
-        "objectLiteralShorthandProperties": true,
-        "spread": true,
-        "superInFunctions": true,
-        "templateStrings": true
-    },
-    "rules":{
-        "indent": [2, 2, { "SwitchCase": 1 }],
-        "react/react-in-jsx-scope": 0
-    }
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "experimentalObjectRestSpread": true,
+    "modules": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true
+  },
+  "rules": {
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "react/react-in-jsx-scope": 0
+  }
 }

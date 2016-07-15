@@ -6,12 +6,11 @@ import HelloWorld from '../../demo/demo-1/hello-world.jsx';
 chai.should();
 
 describe('Transpiling hello-world', () => {
-
   it('should have a render function', () => {
     const component = new HelloWorld();
     (typeof component.render)
       .should
-      .equal('function')
+      .equal('function');
   });
 
   it('should render HelloWorld as <div>Hello world</div>', () => {
@@ -24,11 +23,11 @@ describe('Transpiling hello-world', () => {
       .equal('<div>Hello world</div>');
   });
 
-  it.only('should render <HelloWorld /> as <div>Hello world</div>', () => {
+  it('should render <HelloWorld /> as <div>Hello world</div>', () => {
     const component = <HelloWorld />;
 
     const result = document.createElement('div');
-    ByoReactDOM.render(component, result)
+    ByoReactDOM.render(component, result);
 
     result
       .innerHTML
@@ -40,7 +39,7 @@ describe('Transpiling hello-world', () => {
     const component = <div>Hello world</div>;
 
     const result = document.createElement('div');
-    ByoReactDOM.render(component, result)
+    ByoReactDOM.render(component, result);
 
     result
       .innerHTML
@@ -51,16 +50,16 @@ describe('Transpiling hello-world', () => {
   class HelloUniverse extends ByoReact.Component {
     render() {
       return <div>Hello <b>universe</b></div>;
-    }  
+    }
   }
 
   it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
-    const component = <div>
-        Hello <b>universe</b>
-      </div>;
+    const component = (<div>
+      Hello <b>universe</b>
+    </div>);
 
     const result = document.createElement('div');
-    ByoReactDOM.render(component, result)
+    ByoReactDOM.render(component, result);
 
     result
       .innerHTML
@@ -70,13 +69,13 @@ describe('Transpiling hello-world', () => {
 
   it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
     const component = (<div>
-        <HelloUniverse />
+      <HelloUniverse />
         &nbsp;
-        <p>and the rest</p>
-      </div>);
+      <p>and the rest</p>
+    </div>);
 
     const result = document.createElement('div');
-    ByoReactDOM.render(component, result)
+    ByoReactDOM.render(component, result);
 
     result
       .innerHTML
