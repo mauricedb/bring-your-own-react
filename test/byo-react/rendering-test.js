@@ -32,7 +32,7 @@ describe('Rendering', () => {
                 .equal('<div>Hello world</div>');
     });
 
-    it('should render <TestParent /> as HTMLDivElement', () => {
+    it.skip('should render <TestParent /> as HTMLDivElement', () => {
       const component = <TestParent />;
 
       const result = document.createElement('div');
@@ -46,7 +46,7 @@ describe('Rendering', () => {
   });
 
 
-  describe('should output markup properties', () => {
+  describe.skip('should output markup properties', () => {
     it('should render <div id="42">Hello</div> as HTMLDivElement', () => {
       const component = <div id="42">Hello</div>;
 

@@ -11,6 +11,7 @@ class ReactCompositeComponentWrapper {
 
     const inst =
         new this.currentElement.type(this.currentElement.props); // eslint-disable-line new-cap
+
     this.instance = inst;
 
     const markup = this.performInitialMount(renderedElement, container);

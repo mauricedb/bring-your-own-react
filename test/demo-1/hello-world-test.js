@@ -13,14 +13,22 @@ describe('Transpiling hello-world', () => {
       .equal('function');
   });
 
-  it('should render HelloWorld as <div>Hello world</div>', () => {
+  it('should render HelloWorld as an object', () => {
     const component = new HelloWorld();
     const result = component.render();
 
     result
-      .outerHTML
-      .should
-      .equal('<div>Hello world</div>');
+        .should
+        .deep
+        .equal({
+          props: {
+            __self: component,
+            children: [
+              'Hello world',
+            ],
+          },
+          type: 'div',
+        });
   });
 
   it('should render <HelloWorld /> as <div>Hello world</div>', () => {
@@ -53,7 +61,7 @@ describe('Transpiling hello-world', () => {
     }
   }
 
-  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+  it.skip('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
     const component = (<div>
       Hello <b>universe</b>
     </div>);
@@ -67,7 +75,7 @@ describe('Transpiling hello-world', () => {
       .equal('<div>Hello <b>universe</b></div>');
   });
 
-  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+  it.skip('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
     const component = (<div>
       <HelloUniverse />
         &nbsp;

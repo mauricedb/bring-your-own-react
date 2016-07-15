@@ -1,5 +1,7 @@
 class Component {
-
+  constructor(props) {
+    this.props = props;
+  }
 }
 
 const createElement = (type, props, ...children) => {
