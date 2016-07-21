@@ -61,7 +61,7 @@ describe('Transpiling hello-world', () => {
     }
   }
 
-  it.skip('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
     const component = (<div>
       Hello <b>universe</b>
     </div>);
@@ -75,7 +75,7 @@ describe('Transpiling hello-world', () => {
       .equal('<div>Hello <b>universe</b></div>');
   });
 
-  it.skip('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
+  it('should render <div>Hello <b>universe</b></div> as HTMLDivElement', () => {
     const component = (<div>
       <HelloUniverse />
         &nbsp;
