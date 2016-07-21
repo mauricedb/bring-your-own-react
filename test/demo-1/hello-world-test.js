@@ -1,6 +1,6 @@
 import chai from 'chai';
-import ByoReact from '../../src/bring-your-own-react';
-import ByoReactDOM from '../../src/bring-your-own-react-dom';
+import ByoReact from '../../src/byo-react';
+import ByoReactDOM from '../../src/byo-react-dom';
 import HelloWorld from '../../demo/demo-1/hello-world.jsx';
 
 chai.should();
