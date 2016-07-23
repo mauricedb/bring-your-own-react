@@ -11,17 +11,57 @@ const ReactChildReconciler = {
   },
 };
 
+const DOMProperty = {
+  properties: {
+    className: {
+      attributeName: 'class',
+    },
+    htmlFor: {
+      attributeName: 'for',
+    },
+    id: {
+      attributeName: 'id',
+    },
+    name: {
+      attributeName: 'name',
+    },
+  },
+};
+
+const DOMPropertyOperations = {
+  setValueForProperty(node, name, value) {
+    const propertyInfo = DOMProperty.properties.hasOwnProperty(name) ?
+        DOMProperty.properties[name] : null;
+
+    if (propertyInfo) {
+      const attributeName = propertyInfo.attributeName;
+      node.setAttribute(attributeName, `${value}`);
+    }
+  },
+};
+
+function getNodeFromInstance(inst) {
+  if (inst.hostNode) {
+    return inst.hostNode;
+  }
+
+  return null;
+}
+
+const getNode = getNodeFromInstance;
 
 class ReactDOMComponent {
   constructor(element) {
     this.tag = element.type;
     this.currentElement = element;
+    this.hostNode = null;
   }
 
   mountComponent(container) {
     const el = document.createElement(this.tag);
+    this.hostNode = el;
     const props = this.currentElement.props;
-    this.updateDOMProperties(el);
+    this.updateDOMProperties(null, props);
     this.createInitialChildren(props, el);
 
     container.appendChild(el);
@@ -30,8 +70,15 @@ class ReactDOMComponent {
   }
 
 
-  updateDOMProperties() {
+  updateDOMProperties(lastProps, nextProps) {
+    for (const propKey in nextProps) {
+      const nextProp = nextProps[propKey];
+      if (DOMProperty.properties[propKey]) {
+        const node = getNode(this);
 
+        DOMPropertyOperations.setValueForProperty(node, propKey, nextProp);
+      }
+    }
   }
 
   createInitialChildren(props, el) {
