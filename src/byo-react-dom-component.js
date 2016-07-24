@@ -1,56 +1,10 @@
-import instantiateReactComponent from './byo-instantiate-react-component';
 import ReactReconciler from './byo-react-reconciler';
+import getNode from './byo-get-node-from-instance';
+import ByoReactChildReconciler from './byo-react-child-reconciler';
+import ByoDOMProperty from './byo-dom-property';
+import ByoDOMPropertyOperations from './byo-dom-property-operations';
 
-function instantiateChild(child) {
-  return instantiateReactComponent(child, true);
-}
-
-const ReactChildReconciler = {
-  instantiateChildren(children) {
-    return children.map(instantiateChild);
-  },
-};
-
-const DOMProperty = {
-  properties: {
-    className: {
-      attributeName: 'class',
-    },
-    htmlFor: {
-      attributeName: 'for',
-    },
-    id: {
-      attributeName: 'id',
-    },
-    name: {
-      attributeName: 'name',
-    },
-  },
-};
-
-const DOMPropertyOperations = {
-  setValueForProperty(node, name, value) {
-    const propertyInfo = DOMProperty.properties.hasOwnProperty(name) ?
-        DOMProperty.properties[name] : null;
-
-    if (propertyInfo) {
-      const attributeName = propertyInfo.attributeName;
-      node.setAttribute(attributeName, `${value}`);
-    }
-  },
-};
-
-function getNodeFromInstance(inst) {
-  if (inst.hostNode) {
-    return inst.hostNode;
-  }
-
-  return null;
-}
-
-const getNode = getNodeFromInstance;
-
-class ReactDOMComponent {
+class ByoReactDOMComponent {
   constructor(element) {
     this.tag = element.type;
     this.currentElement = element;
@@ -73,10 +27,10 @@ class ReactDOMComponent {
   updateDOMProperties(lastProps, nextProps) {
     for (const propKey of Object.keys(nextProps)) {
       const nextProp = nextProps[propKey];
-      if (DOMProperty.properties[propKey]) {
+      if (ByoDOMProperty.properties[propKey]) {
         const node = getNode(this);
 
-        DOMPropertyOperations.setValueForProperty(node, propKey, nextProp);
+        ByoDOMPropertyOperations.setValueForProperty(node, propKey, nextProp);
       }
     }
   }
@@ -84,7 +38,7 @@ class ReactDOMComponent {
   createInitialChildren(props, el) {
     const mountImages = [];
     if (props.children) {
-      const children = ReactChildReconciler.instantiateChildren(props.children);
+      const children = ByoReactChildReconciler.instantiateChildren(props.children);
 
       for (const child of children) {
         const mountImage = ReactReconciler.mountComponent(child, el);
@@ -96,4 +50,4 @@ class ReactDOMComponent {
   }
 }
 
-export default ReactDOMComponent;
+export default ByoReactDOMComponent;
