@@ -71,7 +71,7 @@ class ReactDOMComponent {
 
 
   updateDOMProperties(lastProps, nextProps) {
-    for (const propKey in nextProps) {
+    for (const propKey of Object.keys(nextProps)) {
       const nextProp = nextProps[propKey];
       if (DOMProperty.properties[propKey]) {
         const node = getNode(this);
