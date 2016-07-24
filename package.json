@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack",
+    "webpack:watch": "npm run webpack -- --watch",
     "eslint": "eslint ./src/**/*.js ./test/**/*.js ./demo/**/*.js ./demo/**/*.jsx",
     "eslint:fix": "npm run eslint -- --fix",
     "test": "mocha",
